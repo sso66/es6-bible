@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Error Dialog Control</title>
+	<script>
+		// function with invalid variable value
+		function goWrong() {
+			var x = fred
+		}
+		// turn off error dialogs
+		function errOff() {
+			window.onerror = null
+		}
+		// turn on error dialogs with hard reload
+		function errOn() {
+			location.reload()
+		}
+		function onerror(msg, URL, lineNum) {
+			var errWind = window.open("", "errors", "height=270, width=400")
+			var wintxt = "<html><body bgcolor=read>"
+			wintxt += "<b>An error has occurred on this page.  Please report it to Tech Support.</b>"
+			wintxt += "<form method=post action=mailTo:support3@dannyg.com>"
+			wintxt += "<textarea cols=45 rows=8 wrap=virtual>"
+			wintxt += "Error: " + msg + "\n"
+			wintxt += "URL: " + URL + "\n"
+			wintxt += "Line: " + lineNum + "\n"
+			wintxt += "Client: " + navigator.userAgent + "\n"
+			wintxt += "-----------------------------------------\n"
+			wintxt += "Please describe what you were doing when the error occurred:"
+			wintxt += "</textarea><P>"
+			wintxt += "<input type=submit value='Send Error Report'>"
+			wintxt += "<input type=button value='Close' onClick='self.close()'>"
+			wintxt += "</form></body></html>"
+			errWind.document.write(wintxt)
+			errWind.document.close()
+			return true
+		}
+	</script>
+</head>
+<body>
+	<form name="myform">
+		<input type="button" value="Cause an Error" onClick="goWrong()"><P>
+		<input type="button" value="Turn Off Error Dialogs" onClick="errOff()">
+		<input type="button" value="Turn On Error Dialogs" onClick="errOn()">
+	</form>		
+</body>
+</html>

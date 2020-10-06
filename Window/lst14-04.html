@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window.defaultStatus Property</title>
+    <script>window.defaultStatus = "Welcome to my Web site."</script>
+</head>
+<body>
+    <nav>
+        <a href="http://www.google.com" 
+            onMouseOver="window.status = 'Go to your browser Home page.'; return true" 
+            onMouseOut="window.status=''; return true">
+            Home
+        </a>
+        </nav>
+    <nav>
+        <a href="http://home.google.com" 
+            onMouseOver="window.status = 'Visit Google\'s Home page.'; return true" 
+            onMouseOut="window.status = window.defaultStatus; return true">
+            About
+        </a>
+    </nav>        
+</body>
+</html>

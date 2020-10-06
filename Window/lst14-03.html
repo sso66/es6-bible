@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>window.closed Property</title>
+	<style>body { background: black; }</style>
+	<script>
+		// initialize global var for new window object
+		// so it can be accessed by all functions on the page
+		var newWind 
+
+		// make the new window and put some stuff in it
+		function newWindow() {
+			var output = ""
+			newWind = window.open("","subwindow", "height=200, width=200")
+
+			if (newWind.opener == null) {
+				newWind.opener = window
+			}
+			output += "<html><body><h2>A Sub-window</h2>"
+			output += "<form><input type='button' value='Close Main Window' "
+			output += "onClick='window.opener.close()'></form></body></html>"
+			newWind.document.write(output)
+			newWind.document.close()
+		}
+		// close subwindow
+		function closeWindow() {
+			if (newWind && !newWind.closed) {
+				newWind.close()
+			}
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<input type="button" value="Open Window" onClick="newWindow()"><br/>
+		<input type="button" value="Close it if Still Open" onClick="closeWindow()">
+	</form>
+			
+</body>
+</html>
+

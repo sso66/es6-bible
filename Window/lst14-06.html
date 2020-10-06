@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Window Revealer II</title>
+	<script>
+		function gatherWindowData() {
+			var msg = ""
+			msg += "<b>From the point of view of this frame:</b><br />"
+			msg += "window.frames.length: " + window.frames.length + "<br />"
+			msg += "window.name: " + window.name + "<P>"
+			msg += "<b>From the point of view of the framesetting document:</b><br />"
+			msg += "parent.frames.length: " + parent.frames.length + "<BR>"
+			msg += "parent.frames[0].name: " + parent.frames[0].name
+			return msg
+		}		
+	</script>
+</head>
+<body>
+	<script>document.write(gatherWindowData())</script>	
+</body>
+</html>

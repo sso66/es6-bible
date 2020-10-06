@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Window Sizer</title>
+	<script>
+		// store original outer dimensions as page loads
+		var originalWidth = window.outerWidth
+		var originalHeight = window.outerHeight
+
+		// generic function to set inner dimensions
+		function setInner(width, height) {
+			window.innerWidth = width
+			window.innerHeight = height
+		}
+		// generic function to set outer dimensions
+		function setOuter(width, height) {
+			window.outerWidth = width
+			window.outerHeight = height
+		}
+		// restore window to original dimensions
+		function restore() {
+			window.outerWidth = originalWidth
+			window.outerHeight = originalHeight
+		}		
+	</script>
+</head>
+<body>
+	<form>
+		<b>Setting Inner Sizes<bB><br />
+		<input type="button" value="600 Pixels Square" onClick="setInner(600,600)"><br />
+		<input type="button" value="300 Pixels Square" onClick="setInner(300,300)"><br />
+		<input type="button" value="Available Screen Space" onClick="setInner(screen.availWidth, screen.availHeight)"><br />
+		<hr />
+		<b>Setting Outer Sizes</b><br />
+		<input type="button" value="600 Pixels Square" onClick="setOuter(600,600)"><br />
+		<input type="button" value="300 Pixels Square" onClick="setOuter(300,300)"><br />
+		<input type="button" value="Available Screen Space" onClick="setOuter(screen.availWidth, screen.availHeight)"><BR>
+		<HR>
+		<input type="button" value="Cinch up for Win95" onClick="setInner(273,304)"><br />
+		<input type="button" value="Cinch up for Mac" onClick="setInner(273,304)"><br />
+		<input type="button" value="Restore Original" onClick="restore()"><br />
+	</form>
+</body>
+</html>

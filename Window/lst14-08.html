@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bars Bars Bars</title>
+	<script>
+		// store original outer dimensions as page loads
+		var originalLocationbar = window.locationbar.visible
+		var originalMenubar = window.menubar.visible
+		var originalPersonalbar = window.personalbar.visible
+		var originalScrollbars = window.scrollbars.visible
+		var originalStatusbar = window.statusbar.visible
+		var originalToolbar = window.toolbar.visible
+
+		// generic function to set inner dimensions
+		function toggleBar(bar) {
+			// netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite")
+			bar.visible = !bar.visible
+			// netscape.security.PrivilegeManager.disablePrivilege("UniversalBrowserWrite")
+		}
+
+		// restore settings
+		function restore() {
+			// netscape.security.PrivilegeManager.enablePrivilege("UniversalBrowserWrite")
+			window.locationbar.visible = originalLocationbar
+			window.menubar.visible = originalMenubar
+			window.personalbar.visible = originalPersonalbar
+			window.scrollbars.visible = originalScrollbars
+			window.statusbar.visible = originalStatusbar
+			window.toolbar.visible = originalToolbar
+			// netscape.security.PrivilegeManager.disablePrivilege("UniversalBrowserWrite")
+		}
+	</script>
+</head>
+<body onUnload="restore()">
+	<form>
+		<b>Toggle Window Bars</b><br />
+		<input type="button" value="Location Bar" onClick="toggleBar(window.locationbar)"><br />
+		<input type="button" value="Menu Bar" onClick="toggleBar(window.menubar)"><br />
+		<input type="button" value="Personal Bar" onClick="toggleBar(window.personalbar)"><br />
+		<input type="button" value="Scrollbars" onClick="toggleBar(window.scrollbars)"><br />
+		<input type="button" value="Status Bar" onClick="toggleBar(window.statusbar)"><br />
+		<input type="button" value="Tool Bar" onClick="toggleBar(window.toolbar)"><br />
+		<hr />
+		<input type="button" value="Restore Original Settings" onClick="restore()"><br />
+	</form>	
+</body>
+</html>
+
