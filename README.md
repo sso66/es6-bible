@@ -1,1 +1,1 @@
-ES6 JavaScript Bible
+## ES6 JavaScript Bible
